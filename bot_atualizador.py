@@ -1,19 +1,19 @@
 import pyautogui
 import time
 
-# Caminho da imagem que você quer encontrar
 IMAGE_PATH = "assets/refresh_button.png"
 
-# Intervalo em segundos (1 minuto)
-INTERVAL = 60
+INTERVAL = 40
 
-print("Iniciando busca... Pressione CTRL+C para parar.")
+print("Iniciando busca... Clique CTRL + c para interromper a execução.")
 
-while True:
+stop = False
+
+while not stop:
     try:
         location = pyautogui.locateCenterOnScreen(
             IMAGE_PATH,
-            confidence=0.8  # diminua se não estiver encontrando
+            confidence=0.7
         )
 
         if location:

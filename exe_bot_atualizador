@@ -4,7 +4,7 @@ set -e
 
 VENV_DIR="venv"
 
-sudo apt update
+sudo apt update -y -qq
 echo "Verificando Dependências..."
 
 check_command() {
@@ -57,25 +57,12 @@ source "$VENV_DIR/bin/activate"
 # Atualizar pip dentro do venv
 echo "⬆️ Atualizando pip, setuptools e wheel..."
 
-pip uninstall -y pyautogui pyscreeze pillow opencv-python 2>/dev/null || true
+#pip uninstall -y pyautogui pyscreeze pillow opencv-python 2>/dev/null || true
 
 pip install --upgrade pip setuptools wheel
 
 pip install --no-cache-dir pillow
 pip install --no-cache-dir opencv-python
 pip install --no-cache-dir pyautogui
-# echo "🔎 Verificando PyAutoGUI..."
-
-# if python -m pip show pyautogui >/dev/null 2>&1; then
-#     echo "✅ PyAutoGUI já está instalado."
-# else
-#     echo "📦 Instalando PyAutoGUI..."
-#     pip install pyautogui
-
-#     if [ $? -ne 0 ]; then
-#         echo "❌ Erro ao instalar PyAutoGUI."
-#         exit 1
-#     fi
-# fi
 
 python ./bot_atualizador.py
